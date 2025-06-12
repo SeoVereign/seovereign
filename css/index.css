@@ -437,14 +437,6 @@ main .introduce .bottom-text.line::before {
 main .introduce .left-box {
   position: relative;
 }
-
-.symbol {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
 main .introduce .top,
 main .introduce .bottom {
   position: absolute;
