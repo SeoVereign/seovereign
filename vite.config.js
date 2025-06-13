@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    base: './', // relative asset paths so that build output works on any hosting root
+    base: '/', // Use absolute paths for Vercel deployment
     server: {
         open: true,
     },
