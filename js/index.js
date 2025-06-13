@@ -335,6 +335,17 @@ $(document).ready(function () {
 		transformOrigin: 'center center'
 	});
 
+	// Make logos visible (override CSS defaults)
+	gsap.set('.intro .intro-symbol', {
+		opacity: 1,
+		visibility: 'visible'
+	});
+
+	gsap.set('.intro .seovereign', {
+		opacity: 1,
+		visibility: 'visible'
+	});
+
 	// Make sure elements start at their correct offscreen positions
 	gsap.set('.introduce .x-right', {
 		x: '100%',

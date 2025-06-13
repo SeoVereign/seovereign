@@ -54,8 +54,8 @@ main .introduce .intro .intro-symbol {
   transform: translate(-50%, -50%);
   z-index: 1000;
   pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
   transition:
     opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1),
     visibility 0.5s cubic-bezier(0.33, 1, 0.68, 1);
@@ -75,8 +75,8 @@ main .introduce .intro .seovereign {
   z-index: 1000;
   pointer-events: none;
   margin-top: 0;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
   transition:
     opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1),
     visibility 0.5s cubic-bezier(0.33, 1, 0.68, 1);
@@ -1520,7 +1520,9 @@ main .defines .left-box .symbol {
   z-index: 3; /* above current/next */
 }
 
-/* Show logos when introduce section is active */
+/* Show logos when introduce section is active or by default */
+.intro .intro-symbol,
+.intro .seovereign,
 body.section-introduce .intro .intro-symbol,
 body.section-introduce .intro .seovereign {
   opacity: 1;
