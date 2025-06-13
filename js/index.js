@@ -1356,7 +1356,7 @@ $(document).ready(function () {
 			'https://www.tradingview.com/chart/BTCUSDT/yKahV5QT/',
 			'https://www.tradingview.com/chart/XRPUSDT/Hh1S7Tbz/',
 			'https://www.tradingview.com/chart/ETHUSDT/6oHcRjfR/',
-			'https://www.tradingview.com/chart/BTCUSDT/fqcC93vJ/',
+			'https://kr.tradingview.com/chart/BTCUSDT/ztFqkB5H/',
 			'https://www.tradingview.com/chart/ETHUSDT/C1RWt9fF/',
 			'https://www.tradingview.com/chart/SOLUSDT/p557TVSo/',
 			'https://www.tradingview.com/chart/ETHUSDT/vv9ZIv8F/',
