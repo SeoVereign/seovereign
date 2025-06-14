@@ -1,0 +1,26 @@
+<svg width="16" height="58" viewBox="0 0 16 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="16" height="58" fill="#F5F5F5"/>
+<g clip-path="url(#clip0_64_90)">
+<rect width="1920" height="21942" transform="translate(-1106 -2863)" fill="white"/>
+<g clip-path="url(#clip1_64_90)">
+<rect width="1920" height="1080" transform="translate(-1106 -703)" fill="white"/>
+<g clip-path="url(#clip2_64_90)">
+<rect width="820" height="897" transform="translate(-6 -705)" fill="white"/>
+<rect x="-5" y="-704" width="26" height="899" fill="white"/>
+<rect x="-5" y="-704" width="26" height="899" stroke="black" stroke-width="2"/>
+<text transform="translate(-4 59) rotate(-90)" fill="black" xml:space="preserve" style="white-space: pre" font-family="Pretendard" font-size="20" letter-spacing="0em"><tspan x="0" y="19.1094">Eunoia</tspan></text>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_64_90">
+<rect width="1920" height="21942" fill="white" transform="translate(-1106 -2863)"/>
+</clipPath>
+<clipPath id="clip1_64_90">
+<rect width="1920" height="1080" fill="white" transform="translate(-1106 -703)"/>
+</clipPath>
+<clipPath id="clip2_64_90">
+<rect width="820" height="897" fill="white" transform="translate(-6 -705)"/>
+</clipPath>
+</defs>
+</svg>
