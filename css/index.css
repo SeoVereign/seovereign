@@ -1,0 +1,1530 @@
+* {
+  color: var(--color-black);
+  letter-spacing: -0.02em;
+  font-family: var(--font-normal);
+  scrollbar-width: auto;
+}
+
+body {
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  -o-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  transition: background-color 0.8s ease;
+}
+
+body.scroll-enabled {
+  scroll-snap-type: y mandatory;
+}
+
+/* Add hardware acceleration for smoother animations */
+.intro,
+.intro .inner,
+.intro .seovereign,
+.introduce .top-text,
+.introduce .bottom-text,
+.introduce .top-text p,
+.introduce .bottom-text p,
+.introduce .row,
+.introduce .vertical-slide,
+.introduce .y-up,
+.introduce .texts,
+.introduce .x-right,
+.introduce .x-left {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduce logo size */
+main .introduce .intro .symbol img {
+  max-width: 80px;
+  height: auto;
+  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* Fix intro symbol position to prevent vertical movement during animation */
+main .introduce .intro .intro-symbol {
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+    visibility 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+main .introduce .intro .intro-symbol img {
+  max-width: 80px;
+  height: auto;
+  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+main .introduce .intro .seovereign {
+  position: fixed;
+  top: calc(50vh + 120px);
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  pointer-events: none;
+  margin-top: 0;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+    visibility 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+main .introduce .intro .seovereign img {
+  max-width: 250px;
+  height: auto;
+  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* Add responsive logo sizing */
+@media screen and (max-width: 1024px) {
+  main .introduce .intro .symbol img,
+  main .introduce .intro .intro-symbol img {
+    max-width: 70px;
+  }
+
+  main .introduce .intro .seovereign img {
+    max-width: 220px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main .introduce .intro .symbol img,
+  main .introduce .intro .intro-symbol img {
+    max-width: 60px;
+  }
+
+  main .introduce .intro .seovereign img {
+    max-width: 180px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main .introduce .intro .symbol img,
+  main .introduce .intro .intro-symbol img {
+    max-width: 50px;
+  }
+
+  main .introduce .intro .seovereign img {
+    max-width: 150px;
+  }
+}
+
+/* Hide custom cursor and show default cursor for clickable elements */
+a,
+button,
+[onclick],
+[data-link],
+.stacked .stack-list li,
+.defines .left-box ul li:not(:last-child) {
+  cursor: pointer !important;
+}
+
+a:hover,
+button:hover,
+[onclick]:hover,
+[data-link]:hover,
+.stacked .stack-list li:hover,
+.defines .left-box ul li:not(:last-child):hover {
+  cursor: pointer !important;
+}
+
+/* Temporarily hide custom cursor when hovering over clickable elements */
+a:hover ~ .custom-cursor,
+button:hover ~ .custom-cursor,
+[onclick]:hover ~ .custom-cursor,
+[data-link]:hover ~ .custom-cursor,
+.stacked .stack-list li:hover ~ .custom-cursor,
+.defines .left-box ul li:not(:last-child):hover ~ .custom-cursor {
+  opacity: 0 !important;
+}
+
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  background: #000;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.img,
+.texts {
+  max-height: 100%;
+}
+
+.img {
+  display: flex;
+}
+
+article {
+  width: 100%;
+  height: 100vh;
+}
+
+tspan {
+  shape-rendering: geometricPrecision;
+}
+
+main section {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+main .inner {
+  width: 100%;
+  height: 100%;
+}
+main .vertical-slide {
+  flex-shrink: 0;
+  display: flex;
+  column-gap: 2px;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+  margin-right: 0;
+}
+main .vertical-slide::before,
+main .vertical-slide::after {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 100%;
+  background: var(--color-black);
+}
+main .vertical-slide .to-up {
+  width: 14px;
+  position: relative;
+}
+main .vertical-slide .inner {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 150px;
+  padding: 80px 0;
+}
+main .vertical-slide.on {
+  transform: translateY(0);
+}
+main .bottom-text p {
+  line-height: 0.865;
+}
+main .x-left {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition:
+    transform 0.8s cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* Add a specific override for the ul.x-left */
+main .defines .left-box ul.x-left {
+  transform: translateX(100%);
+}
+
+main .x-right {
+  transform: translateX(100%);
+  opacity: 0;
+  transition:
+    transform 0.8s cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+main .y-down {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition:
+    transform 0.8s cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* Override for bottom-texts.y-down */
+main .defines .left-box .bottom-texts.y-down {
+  transform: translateY(100%);
+}
+
+main .y-up {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition:
+    transform 0.8s cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* Add classes for the visible state to ensure CSS fallback works */
+main .x-left.visible,
+main .x-right.visible,
+main .y-up.visible,
+main .y-down.visible {
+  transform: translateX(0) translateY(0);
+  opacity: 1;
+}
+
+/* Specific selectors for the defines section elements */
+main .defines .left-box ul.x-left {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+main .defines .left-box ul.x-left.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+main .defines .left-box .bottom-texts.y-down {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+main .defines .left-box .bottom-texts.y-down.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Additional animation styles for the specific images */
+main .introduce .left-box .top.y-down img {
+  transition-delay: 0.1s;
+}
+
+main .introduce .left-box .bottom.x-left img {
+  transition-delay: 0.2s;
+}
+
+main .introduce .right-box.x-right img {
+  transition-delay: 0.15s;
+}
+
+main .introduce {
+  height: 100vh;
+  position: relative;
+}
+main .introduce > .inner {
+  display: grid;
+  grid-template-rows: 100vh 0;
+  transition: grid-template-rows 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+main .introduce > .inner.contents-on {
+  grid-template-rows: calc(100vh - 140px) 180px;
+}
+main .introduce .contents {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+main .introduce .intro {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-black);
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  transition:
+    height 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+    left 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+    top 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+main .introduce .intro .inner {
+  row-gap: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: row-gap 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+main .introduce .intro.off {
+  height: 100vh - 220px;
+  top: 50% + 40px;
+}
+main .introduce .intro.off .inner {
+  row-gap: 0;
+}
+main .introduce .intro.off .seovereign {
+  height: 0;
+  transition: height 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+main .introduce .row {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100% 0 0;
+  position: relative;
+  z-index: 2;
+  transition:
+    grid-template-columns 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+    display 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+main .introduce .row.row-on {
+  display: flex;
+  column-gap: 0;
+}
+main .introduce .top-text,
+main .introduce .bottom-text {
+  background: var(--color-white);
+  position: relative;
+  z-index: 1;
+  transition:
+    height 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+    transform 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+    font-size 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+main .introduce .top-text {
+  height: 80px;
+  font-size: clamp(4rem, 8vw, 8rem);
+  transform: translateY(-100%);
+  min-width: max-content;
+  width: 100%;
+}
+main .introduce .top-text::before,
+main .introduce .top-text::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 4px;
+  background: var(--color-black);
+  transition: width 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+main .introduce .top-text p {
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  white-space: nowrap;
+}
+main .introduce .top-text.line::before,
+main .introduce .top-text.line::after {
+  width: 100%;
+}
+main .introduce .bottom-text {
+  flex-shrink: 0;
+  font-size: clamp(5rem, 10vw, 10.4rem);
+  transform: translateY(100%);
+  z-index: 2;
+}
+main .introduce .bottom-text::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 5px;
+  background: var(--color-black);
+  transition: width 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+main .introduce .bottom-text p {
+  letter-spacing: -0.045em;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+main .introduce .bottom-text.line::before {
+  width: 100%;
+}
+main .introduce .left-box {
+  position: relative;
+}
+main .introduce .top,
+main .introduce .bottom {
+  position: absolute;
+  z-index: 1;
+  display: flex; /* Center the reduced image */
+  align-items: center;
+  justify-content: center;
+}
+main .introduce .top {
+  top: 0;
+  right: 0;
+}
+main .introduce .bottom {
+  left: 0;
+  bottom: 0;
+}
+main .introduce .texts {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: left 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 텍스트 마키 스타일 */
+.text-marquee {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+}
+
+.text-marquee-inner {
+  display: flex;
+  white-space: nowrap;
+  height: 50%;
+  align-items: center;
+}
+
+.text-item {
+  font-family: 'Franklin Gothic', Arial, sans-serif;
+  display: inline-block;
+  margin: 0 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  letter-spacing: 0.02em;
+  transition: opacity 0.3s ease;
+}
+
+.text-item:hover {
+  opacity: 1 !important;
+}
+
+/* 첫 번째 행의 텍스트들 - 크기와 불투명도 */
+.text-marquee-inner:first-child .text-item:nth-child(odd) {
+  font-size: 3.8rem;
+  opacity: 0.7;
+  color: var(--color-black);
+}
+
+.text-marquee-inner:first-child .text-item:nth-child(even) {
+  font-size: 4.5rem;
+  opacity: 0.55;
+  color: var(--color-black);
+}
+
+/* 두 번째 행의 텍스트들 - 크기와 불투명도 */
+.text-marquee-inner:last-child .text-item:nth-child(odd) {
+  font-size: 5.2rem;
+  opacity: 0.35;
+  color: var(--color-black);
+}
+
+.text-marquee-inner:last-child .text-item:nth-child(even) {
+  font-size: 4.2rem;
+  opacity: 0.65;
+  color: var(--color-black);
+}
+
+/* 반응형 텍스트 크기 조정 */
+@media screen and (max-width: 1024px) {
+  .text-marquee-inner:first-child .text-item:nth-child(odd) {
+    font-size: 3.2rem;
+  }
+
+  .text-marquee-inner:first-child .text-item:nth-child(even) {
+    font-size: 3.8rem;
+  }
+
+  .text-marquee-inner:last-child .text-item:nth-child(odd) {
+    font-size: 4.2rem;
+  }
+
+  .text-marquee-inner:last-child .text-item:nth-child(even) {
+    font-size: 3.6rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main .introduce .texts {
+    height: 120px;
+  }
+
+  .text-marquee-inner:first-child .text-item:nth-child(odd) {
+    font-size: 2.6rem;
+  }
+
+  .text-marquee-inner:first-child .text-item:nth-child(even) {
+    font-size: 3rem;
+  }
+
+  .text-marquee-inner:last-child .text-item:nth-child(odd) {
+    font-size: 3.2rem;
+  }
+
+  .text-marquee-inner:last-child .text-item:nth-child(even) {
+    font-size: 2.8rem;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Add responsive media queries for better behavior on different screen sizes */
+@media screen and (max-width: 1024px) {
+  main .introduce .top-text {
+    font-size: clamp(3.5rem, 6vw, 5.2rem);
+  }
+
+  main .introduce .bottom-text {
+    font-size: clamp(4rem, 8vw, 8rem);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main .introduce .top-text {
+    font-size: clamp(2.8rem, 5vw, 4rem);
+  }
+
+  main .introduce .bottom-text {
+    font-size: clamp(3rem, 6vw, 6rem);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main .introduce > .inner.contents-on {
+    grid-template-rows: calc(100vh - 120px) 120px;
+  }
+
+  main .introduce .bottom-text p br {
+    display: none;
+  }
+}
+
+main .defines .inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  padding: 103px 0;
+  overflow: visible;
+  position: relative;
+}
+main .defines .inner > * {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+main .defines .inner.off {
+  transform: translateY(-40px);
+}
+main .defines .left-box {
+  background: var(--color-black);
+  padding: 80px 0;
+  position: absolute;
+  left: 100%;
+  top: 80px;
+  bottom: 80px;
+  width: 50%;
+  height: calc(100% - 160px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 가로축 중앙 정렬 유지 */
+  justify-content: flex-start;
+  will-change: left, top, width, height;
+  transition:
+    left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    width 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    padding 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top left;
+  box-sizing: border-box;
+  z-index: 5;
+}
+main .defines .left-box .top-texts,
+main .defines .left-box .bottom-texts {
+  position: absolute;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top left;
+}
+main .defines .left-box .top-texts {
+  top: 0;
+  left: 0;
+}
+main .defines .left-box .bottom-texts {
+  right: 0;
+  bottom: 0;
+  transform-origin: bottom right;
+}
+main .defines .left-box .top-texts svg path,
+main .defines .left-box .bottom-texts svg path,
+main .defines .left-box .symbol img {
+  fill: var(--color-white);
+  color: var(--color-white);
+  filter: brightness(1);
+}
+main .defines .left-box ul {
+  width: 230px;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  margin-right: 3px;
+  transition:
+    top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top right;
+}
+main .defines .left-box ul li {
+  font-size: clamp(1.6rem, 1.8vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  position: relative;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+  transition:
+    font-size 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    letter-spacing 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: left center;
+}
+main .defines .left-box ul li.on {
+  font-size: clamp(2.4rem, 2.8vw, 3.2rem);
+  letter-spacing: 0;
+  transition:
+    font-size 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    letter-spacing 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+main .defines .left-box ul li.on p {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+main .defines .left-box ul li.on span {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+main .defines .left-box ul li > * {
+  line-height: 1.1;
+  white-space: nowrap;
+}
+main .defines .left-box ul li p {
+  color: var(--color-white);
+  transition: opacity 0.3s ease;
+}
+main .defines .left-box ul li span {
+  column-gap: 10px;
+  color: #bfbfbf;
+  opacity: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease;
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+}
+main .defines .left-box ul li.on span {
+  opacity: 1;
+  color: var(--color-white);
+}
+main .defines .left-box ul li span::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 1.4265em;
+  background: var(--color-white);
+  margin-right: 2px;
+}
+main .defines .right-box {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 80px;
+  bottom: 80px;
+  width: 50%;
+  height: calc(100% - 160px);
+}
+
+main .defines .right-box .top-hr {
+  width: 100%;
+  height: 2px;
+  background: var(--color-black);
+  margin: 0;
+  border: none;
+  will-change: transform, opacity;
+}
+
+main .defines .right-box .title-text {
+  padding: 15px 15px;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  will-change: transform, opacity;
+}
+
+main .defines .right-box .second-hr {
+  width: 100%;
+  height: 2px;
+  background: var(--color-black);
+  margin: 0;
+  border: none;
+  will-change: transform, opacity;
+}
+
+main .defines .right-box .top-text {
+  flex-shrink: 0;
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+main .defines .right-box .top-text::before {
+  display: none;
+}
+
+main .defines .right-box .top-text::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-black);
+}
+
+main .defines .right-box .text-box,
+main .defines .right-box .text-box .text {
+  height: 100%;
+}
+
+main .defines .right-box .text-box {
+  border-bottom: none;
+  position: relative;
+  flex-grow: 1;
+}
+
+main .defines .right-box .text-box .text {
+  display: grid;
+  grid-template-rows: 60% 2px calc(40% - 2px);
+  position: absolute;
+  transition: opacity 0.4s ease;
+}
+
+main .defines .right-box .text-box .text::before {
+  display: none;
+}
+
+main .defines .right-box .text-box .text h4 {
+  font-size: clamp(8rem, 8rem, 10rem);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 0;
+}
+main .defines .right-box .text-box .text h4 {
+  transform: translateX(100%);
+}
+main .defines .right-box .text-box .text hr {
+  width: 100%;
+  height: 2px;
+  background: var(--color-black);
+  border: none;
+  margin: 0;
+  transform: translateX(-100%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+main .defines .right-box .text-box .text p {
+  font-size: clamp(5rem, 7vw, 7rem);
+  line-height: 0.9;
+  font-family: var(--font-normal);
+  transform: translateX(-100%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+main .defines .right-box .text-box .text span {
+  font-size: 2.4rem;
+  font-weight: 700;
+  font-family: var(--font-normal);
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+main .defines .right-box .text-box .text.on h4,
+main .defines .right-box .text-box .text.on p {
+  transform: translateX(0);
+}
+main .defines .right-box .text-box .text.on span {
+  opacity: 1;
+}
+
+/* 텍스트 펄스 애니메이션 */
+@keyframes pulseText {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 섹션 전환 애니메이션 */
+.section-transition {
+  transition: all 0.7s ease;
+}
+
+main .defines .right-box .text-box .text1 p {
+  font-size: clamp(4rem, 6vw, 8rem);
+}
+main .defines .right-box .text-box .text3 h4 {
+  font-size: clamp(6rem, 8vw, 8rem);
+}
+main .contact .information {
+  border: 2px solid var(--color-black);
+  padding: 20px;
+}
+main .contact .information .flex-col {
+  display: flex;
+  flex-direction: column;
+  row-gap: 70px;
+}
+main .contact .information .flex-col * {
+  font-size: 3.8rem;
+}
+main .contact .bottom-text {
+  font-size: 10rem;
+}
+main .contact .bottom-text p {
+  letter-spacing: -0.045em;
+}
+
+/* 섹션 트랜지션 및 스크롤 관련 스타일 */
+body {
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  -o-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  transition: background-color 0.8s ease;
+}
+
+body.scroll-enabled {
+  scroll-snap-type: y mandatory;
+}
+
+/* 섹션 호버 효과 */
+main .defines .left-box ul li.hover p {
+  opacity: 0.8;
+}
+
+/* 섹션 간 전환 애니메이션 */
+.section-transition {
+  transition: all 0.7s ease;
+}
+
+/* 스크롤 스냅 설정 */
+main section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* 섹션 활성화 상태 스타일 */
+body.section-introduce .introduce {
+  z-index: 5;
+}
+
+body.section-defines .defines {
+  z-index: 5;
+}
+
+/* 섹션 항목 호버 스타일 */
+main .defines .left-box ul li.hover {
+  color: var(--color-white);
+}
+
+main .defines .left-box ul li:hover span::before {
+  width: 24px;
+}
+
+/* 애니메이션 미적용 상태에서 브라우저 리사이즈 시 정렬 보존 */
+@media screen and (max-width: 768px) {
+  main .defines .left-box ul li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* 항목 간 간격 설정 */
+.defines .left-box ul li {
+  padding: 2px 0;
+}
+
+.defines .left-box ul li.on {
+  padding: 2px 0;
+}
+
+/* NETWORKERS 텍스트 크기 조정 */
+main .defines .left-box ul li:nth-child(3).on span {
+  font-size: clamp(2.2rem, 2.6vw, 3rem);
+  letter-spacing: -0.02em;
+  transform: translateY(-50%) translateX(-5px);
+}
+
+/* 텍스트 앞의 흰색 막대 크기 조정 */
+main .defines .left-box ul li:nth-child(3).on span::before {
+  width: 12px;
+  margin-right: 2px;
+}
+
+/* get in touch 항목에는 효과 제거 */
+main .defines .left-box ul li:last-child {
+  cursor: default;
+  opacity: 0.8;
+}
+
+main .defines .left-box ul li:last-child:hover {
+  opacity: 1;
+}
+
+/* 미디어 쿼리로 반응형 처리 */
+@media screen and (max-width: 1200px) {
+  main .defines .left-box ul {
+    width: 210px;
+    margin-right: 3px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  main .defines .left-box ul {
+    width: 190px;
+    margin-right: 3px;
+  }
+
+  main .defines .left-box ul li.on {
+    font-size: 3rem;
+  }
+
+  main .defines .left-box ul li:nth-child(3).on span {
+    font-size: 2.8rem;
+  }
+}
+
+/* 활성화 상태일 때 번호 아래 라인이 표시되도록 설정 */
+main .defines .right-box .text-box .text.on span::after {
+  transform: translateX(0);
+}
+
+main .defines .right-box .bottom-hr {
+  width: 100%;
+  height: 2px;
+  background: var(--color-black);
+  margin: 0;
+  border: none;
+  will-change: transform, opacity;
+}
+
+/* Add responsive media queries specifically for the defines section text */
+@media screen and (max-width: 992px) {
+  main .defines .right-box .text-box .text h4 {
+    font-size: clamp(6rem, 8vw, 8rem);
+  }
+
+  main .defines .right-box .text-box .text p {
+    font-size: clamp(4rem, 6vw, 6rem);
+  }
+
+  main .defines .right-box .text-box .text1 p {
+    font-size: clamp(3.5rem, 5vw, 6rem);
+  }
+
+  main .defines .right-box .text-box .text3 h4 {
+    font-size: clamp(5rem, 7vw, 9rem);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main .defines .right-box .text-box .text h4 {
+    font-size: clamp(5rem, 7vw, 8rem);
+  }
+
+  main .defines .right-box .text-box .text p {
+    font-size: clamp(3rem, 5vw, 6rem);
+  }
+
+  main .defines .right-box .text-box .text1 p {
+    font-size: clamp(2.8rem, 4vw, 5rem);
+  }
+
+  main .defines .right-box .text-box .text3 h4 {
+    font-size: clamp(4rem, 6vw, 7rem);
+  }
+
+  main .defines .right-box .text-box .text span {
+    font-size: 1.8rem;
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  main .defines .right-box .text-box .text h4 {
+    font-size: clamp(4rem, 6vw, 6rem);
+  }
+
+  main .defines .right-box .text-box .text p {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+  }
+
+  main .defines .right-box .text-box .text1 p {
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  }
+
+  main .defines .right-box .text-box .text3 h4 {
+    font-size: clamp(3.5rem, 5vw, 5rem);
+  }
+}
+
+/* Add styles to make the symbol-black.png logo smaller */
+figure.symbol.x-left img {
+  max-width: 305px;
+  height: auto;
+}
+
+/* =========================
+   Stacked Typography Section
+   ========================= */
+main .stacked {
+  background: var(--color-white);
+  height: auto;
+}
+
+main .stacked .inner {
+  width: 100%;
+  margin: 0;
+}
+
+main .stacked .stack-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+main .stacked .stack-list li {
+  font-family: 'Franklin Gothic', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(4rem, 8vw, 13rem);
+  line-height: 1.1;
+  padding: 15px 20px;
+  margin: 0;
+  border-bottom: 1px solid var(--color-black);
+  background: var(--color-white);
+  color: #000;
+  text-align: center;
+  font-style: normal;
+  transition: color 0.3s ease;
+  cursor: default;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  transition:
+    color 0.4s ease,
+    transform 0.4s ease;
+}
+
+/* Blind overlay for hover */
+main .stacked .stack-list li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-black);
+  transform: translateY(-100%);
+  transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+  z-index: -1;
+}
+
+/* Remove hover effects completely */
+main .stacked .stack-list li:hover {
+  color: inherit;
+}
+
+main .stacked .stack-list li:hover::before {
+  transform: translateY(-100%);
+}
+
+/* Add centered item styling - only applied via JS */
+main .stacked .stack-list li.centered {
+  color: var(--color-white);
+  /* Add subtle scale effect */
+  transform: scale(1.02);
+  transition:
+    color 0.4s ease,
+    transform 0.4s ease;
+  position: relative;
+  z-index: 2; /* Raise above other items */
+}
+
+main .stacked .stack-list li.centered::before {
+  transform: translateY(0);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Add top/bottom borders */
+main .stacked .stack-list li:first-child {
+  border-top: 1px solid var(--color-black);
+}
+
+main .stacked .stack-list li:last-child {
+  border-bottom: 1px solid var(--color-black);
+}
+
+@media screen and (max-width: 768px) {
+  main .stacked .stack-list li {
+    padding: 40px 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main .stacked .stack-list li {
+    font-size: clamp(4rem, 12vw, 6rem);
+  }
+}
+
+/* =========================
+   Chart Preview (stacked)
+   ========================= */
+.chart-preview {
+  position: fixed; /* Stick to viewport */
+  top: 0;
+  right: 0;
+  width: 1800px; /* Larger than before but still in corner */
+  max-width: 67vw;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0;
+  transform-origin: top right;
+  transition: opacity 0.3s ease;
+}
+
+.chart-preview.visible {
+  opacity: 1;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.chart-preview .image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.chart-preview .image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.chart-preview .image-container .current-image {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 1;
+}
+
+.chart-preview .image-container .next-image {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 2;
+  transform-origin: center center;
+}
+
+/* =========================================
+   Introduce section typography overrides
+   ========================================= */
+main .introduce .top-text p,
+main .introduce .bottom-text p {
+  font-weight: 700;
+}
+
+/* 104 px (6.5 rem) at 1920×1080 for the bottom tagline */
+main .introduce .bottom-text {
+  font-size: 7.8rem;
+}
+
+/* =============================
+   Introduce – adjust left/right box split
+   ============================= */
+/* When the row becomes active (row-on), let the right side size itself exactly to the image width
+   while the left side fills the remaining space. */
+main .introduce .row.row-on {
+  /* Ensure the children follow the desired flex behaviour */
+  display: flex;
+}
+
+/* Right column — occupy only as much width as the image needs */
+main .introduce .row.row-on .right-box {
+  flex: 0 0 auto; /* do not grow / shrink */
+  display: flex; /* allow the figure to stretch */
+  align-items: stretch;
+}
+
+/* Stretch the figure to full height so the image can decide its own width */
+main .introduce .row.row-on .right-box .img,
+main .introduce .row.row-on .right-box .img img {
+  height: 100%;
+}
+
+/* Keep original aspect-ratio and avoid cropping */
+main .introduce .row.row-on .right-box .img img {
+  width: auto; /* width comes from height/aspect-ratio */
+  object-fit: contain; /* maintain original ratio, no crop */
+}
+
+/* Left column — simply take up the remaining free space */
+main .introduce .row.row-on .left-box {
+  flex: 1 1 auto;
+}
+
+/* Contact Image Animation */
+.contact-image {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.contact-image .inner {
+  padding: 0;
+  max-width: 100%;
+  position: relative;
+  height: 100%;
+}
+
+.contact-image .image-container {
+  width: 100%;
+  height: calc(100% - 130px);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0;
+}
+
+.contact-image .left-image {
+  transition: all 1.5s ease;
+  transform-origin: left center;
+  max-width: 630px;
+  width: 400px;
+  height: 810px;
+  object-fit: cover;
+  position: relative;
+}
+
+.contact-image .left-image.expanded {
+  width: 48% !important;
+  height: 810px !important;
+  object-fit: cover !important;
+  transform: scale(1) !important;
+}
+
+.contact-image .right-container {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 400px - 60px);
+  position: relative;
+}
+
+.contact-image .content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.contact-image .middle-box {
+  width: auto;
+  flex-grow: 1;
+  height: 500px;
+  border: 1px solid #000;
+  margin: 0 30px;
+  margin-right: 60px;
+  align-self: flex-end;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 30px;
+  text-align: center;
+}
+
+.contact-image .middle-box h3 {
+  font-family: 'Franklin Gothic', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.contact-image .middle-box p {
+  font-family: 'Franklin Gothic', sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+/* Contact 섹션의 vertical-slide 스타일 조정 */
+.contact-image .vertical-slide.contact-slide {
+  flex-shrink: 0;
+  display: flex;
+  column-gap: 2px;
+  overflow: hidden;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+  margin-right: 0;
+  height: 100%;
+  right: 48%;
+  position: absolute;
+  margin: 0;
+  z-index: 2;
+  opacity: 0;
+  background: var(--color-white);
+}
+
+.contact-image .vertical-slide.contact-slide.on {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.contact-image .vertical-slide.contact-slide .to-up {
+  width: 14px;
+  position: relative;
+}
+
+.contact-image .vertical-slide.contact-slide .inner {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 150px;
+  padding: 80px 0;
+}
+
+.contact-image .vertical-slide.contact-slide::before,
+.contact-image .vertical-slide.contact-slide::after {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 100%;
+  background: var(--color-black);
+}
+
+.contact-image .right-image {
+  width: 450px;
+  height: 500px;
+  object-fit: cover;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 1.5s ease;
+  display: block;
+}
+
+.contact-image .right-image.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.contact-image .marquee-top {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  opacity: 1;
+  margin-bottom: 10px;
+}
+
+/* 기존 마키 스타일 재사용 */
+.contact-image .text-marquee {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+}
+
+.contact-image .text-marquee-inner {
+  display: flex;
+  white-space: nowrap;
+  height: 50%;
+  align-items: center;
+}
+
+.contact-text {
+  position: absolute;
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  transition: right 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-bottom: 0;
+}
+
+.contact-text.visible {
+  right: 0;
+}
+
+.contact-text p {
+  font-family: 'Franklin Gothic', sans-serif;
+  font-weight: 700;
+  font-size: clamp(5rem, 7vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  text-align: left;
+  color: var(--color-black);
+}
+
+/* symbol을 항상 중앙에 위치하게 설정 */
+main .defines .left-box .symbol {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* stacked chart preview temporary zoom images */
+.chart-preview .zoom-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  z-index: 3; /* above current/next */
+}
+
+/* Show logos when introduce section is active or by default */
+.intro .intro-symbol,
+.intro .seovereign,
+body.section-introduce .intro .intro-symbol,
+body.section-introduce .intro .seovereign {
+  opacity: 1;
+  visibility: visible;
+}

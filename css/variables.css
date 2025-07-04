@@ -1,0 +1,27 @@
+:root {
+  --color-yellow: #ebe3bd;
+  --color-white: #ffffff;
+  --color-gray: #ebebeb;
+  --color-black: #000000;
+  /* Provide system fallbacks so every element without explicit Franklin Gothic will still render it if available, and otherwise use a clean sans-serif */
+  --font-normal: 'Franklin Gothic', Arial, sans-serif;
+  --font-atf: 'Franklin Gothic', Arial, sans-serif;
+  --font-pretendard: 'Franklin Gothic', Arial, sans-serif;
+}
+
+@font-face {
+  font-family: 'Franklin Gothic';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('Franklin Gothic'),
+    url('./fonts/Franklin Gothic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Franklin Gothic ATF';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('Franklin Gothic ATF'),
+    url('./fonts/Franklin Gothic ATF.woff') format('woff');
+}

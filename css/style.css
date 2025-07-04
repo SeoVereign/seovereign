@@ -1,0 +1,222 @@
+@charset "utf-8";
+
+@import url('reset.css');
+@import url('variables.css');
+@import url('index.css');
+
+/* Franklin Gothic 폰트 추가 */
+@font-face {
+  font-family: 'Franklin Gothic';
+  src:
+    url('https://use.typekit.net/af/822a05/000000000000000000014882/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/822a05/000000000000000000014882/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
+      format('woff');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Franklin Gothic';
+  src:
+    url('https://use.typekit.net/af/c7d3e9/000000000000000000014883/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+      format('woff2'),
+    url('https://use.typekit.net/af/c7d3e9/000000000000000000014883/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
+      format('woff');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Custom Cursor Styles */
+* {
+  cursor: none !important;
+  max-width: none; /* Reset any max-width that might interfere */
+}
+
+.custom-cursor {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 20px;
+  height: 20px;
+  background-color: #000 !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+  z-index: 2147483647 !important; /* Maximum possible z-index value */
+  transform: translate(-50%, -50%) !important;
+  transition:
+    transform 0.1s ease-out,
+    width 0.2s ease-out,
+    height 0.2s ease-out !important;
+  mix-blend-mode: difference !important;
+  /* Additional properties to ensure cursor is always on top */
+  isolation: isolate !important;
+  will-change: transform !important;
+  backface-visibility: hidden !important;
+  /* Force hardware acceleration */
+  transform-style: preserve-3d !important;
+  /* Ensure it's always visible */
+  visibility: visible !important;
+  opacity: 1 !important;
+  /* Create a new stacking context */
+  contain: layout style paint !important;
+}
+
+.custom-cursor.hover {
+  width: 40px !important;
+  height: 40px !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.custom-cursor.click {
+  width: 15px !important;
+  height: 15px !important;
+  background-color: #000 !important;
+}
+
+/* Ensure other fixed elements don't interfere with cursor */
+.chart-preview {
+  z-index: 999 !important; /* Keep it lower than cursor */
+}
+
+.mobile-warning {
+  z-index: 10000 !important; /* Keep it lower than cursor */
+}
+
+/* Target specific elements that might interfere with cursor */
+.chart-preview,
+.chart-preview * {
+  z-index: 999 !important;
+}
+
+.contact-image .left-image,
+.contact-image .right-image {
+  z-index: 1 !important;
+}
+
+/* Ensure images don't create stacking contexts that interfere */
+img:not(.custom-cursor) {
+  isolation: auto !important;
+}
+
+/* Mobile warning styles */
+.mobile-warning {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: 'Franklin Gothic', Arial, sans-serif;
+}
+
+.mobile-warning-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.mobile-warning-symbol {
+  margin-bottom: 40px;
+}
+
+.mobile-warning-symbol img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.mobile-warning-text h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  letter-spacing: 0.1em;
+}
+
+.mobile-warning-text p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.mobile-warning-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+}
+
+.mobile-warning-footer p {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  font-weight: 300;
+}
+
+/* Hide main content on mobile */
+.main-content {
+  display: block;
+}
+
+/* Mobile detection and responsive styles */
+@media (max-width: 1024px) {
+  .mobile-warning {
+    display: flex;
+  }
+
+  .main-content {
+    display: none !important;
+  }
+
+  .chart-preview {
+    display: none !important;
+  }
+
+  /* Hide custom cursor on mobile */
+  .custom-cursor {
+    display: none !important;
+  }
+
+  /* Reset cursor for mobile */
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* Additional mobile-specific adjustments */
+@media (max-width: 768px) {
+  .mobile-warning-text h1 {
+    font-size: 2rem;
+  }
+
+  .mobile-warning-text p {
+    font-size: 1rem;
+  }
+
+  .mobile-warning-symbol img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-warning-content {
+    padding: 20px 15px;
+  }
+
+  .mobile-warning-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .mobile-warning-text p {
+    font-size: 0.9rem;
+  }
+}
